@@ -1,6 +1,5 @@
 import s from './ContactsList.module.css'
-import Button from '../Button'
-
+import Contact from '../Contact'
 interface Contact {
   id: string
   name: string
@@ -21,16 +20,13 @@ export default function ContactsList({
       <ul className={s.list}>
         {contacts.map(({ name, number, id }) => {
           return (
-            <li key={id} className={s.item}>
-              <p>
-                {name}: {number}
-              </p>
-              <Button
-                text={'Delete'}
-                listener={() => onDeleteContact(id)}
-                color="red"
-              />
-            </li>
+            <Contact
+              key={id}
+              name={name}
+              number={number}
+              id={id}
+              onDeleteContact={onDeleteContact}
+            />
           )
         })}
       </ul>
